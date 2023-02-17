@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.allannava.recyclerviewgenerics.R
 
 /**
  * Created by Allan Nava on 17/02/2023.
@@ -18,10 +19,10 @@ class ContentsCell<T> : LinearLayout {
     //
     //lateinit var presenter:  BaseVideoContracts.Presenter
     //
-    //private val adapter: ContentAdapter<T> = ContentAdapter()
+    private val adapter: ContentAdapter<T> = ContentAdapter()
     override fun onFinishInflate() {
         super.onFinishInflate()
-        //recyclerView = findViewById(R.id.recyclerViewContents)
+        recyclerView = findViewById(R.id.recyclerViewContents)
     }
 
     var recyclerView: RecyclerView? = null
@@ -29,7 +30,7 @@ class ContentsCell<T> : LinearLayout {
             field = value
             val layoutManager           = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
             recyclerView?.layoutManager = layoutManager
-            //recyclerView?.adapter       = adapter
+            recyclerView?.adapter       = adapter
             recyclerView?.setHasFixedSize(true)
             val snapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(recyclerView)

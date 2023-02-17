@@ -8,7 +8,7 @@ import android.os.Bundle
  * Created by Allan Nava on 17/02/2023.
  * Updated by Allan Nava on 17/02/2023.
  */
-interface BaseContracts {
+object BaseContracts {
 
     interface View {
         fun getActivityContext(): Context?

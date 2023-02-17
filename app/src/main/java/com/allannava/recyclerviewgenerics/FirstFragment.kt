@@ -1,12 +1,16 @@
 package com.allannava.recyclerviewgenerics
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.allannava.recyclerviewgenerics.Models.Widget
+import com.allannava.recyclerviewgenerics.UXClasses.JsonUtils
 import com.allannava.recyclerviewgenerics.databinding.FragmentFirstBinding
+import com.google.gson.Gson
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -35,6 +39,11 @@ class FirstFragment : Fragment() {
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
+        val jsonFileString = JsonUtils.getJsonDataFromAsset(this.requireContext(), "data.json")
+        if (jsonFileString != null) {
+            Log.i("data", jsonFileString)
+        }
+        //
     }
 
     override fun onDestroyView() {
