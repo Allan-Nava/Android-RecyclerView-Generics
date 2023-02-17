@@ -7,13 +7,29 @@ package com.allannava.recyclerviewgenerics.Models.Representation
 
 class MutableCollectionWidgetItem<T> where T : WidgetItemType {
     private val items: MutableList<T> = mutableListOf()
-
+    /**
+     * Add the item in the collection.
+     */
     fun addItem(item: T) {
         items.add(item)
     }
-
+    /**
+     * Returns the list of the collection.
+     */
     fun getItems(): List<T> {
         return items
+    }
+    /**
+     * Returns the size of the collection.
+     */
+    fun size(): Int {
+        return items.size
+    }
+    /**
+     * Returns an element at the given index or throws an IndexOutOfBoundsException if the index is out of bounds of this collection.
+     */
+    fun elementAt(i: Int): T {
+        return items[i]
     }
 }
 //
