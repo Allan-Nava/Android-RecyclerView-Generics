@@ -8,9 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.allannava.recyclerviewgenerics.Models.Widget
+import com.allannava.recyclerviewgenerics.Models.WidgetViewModel
 import com.allannava.recyclerviewgenerics.UXClasses.JsonUtils
+import com.allannava.recyclerviewgenerics.UXClasses.LayoutAdapter
 import com.allannava.recyclerviewgenerics.databinding.FragmentFirstBinding
 import com.google.gson.Gson
+import com.google.gson.JsonObject
+
+
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -18,7 +24,7 @@ import com.google.gson.Gson
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-
+    private val TAG = "FirstFragment"
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -35,13 +41,20 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        //
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         val jsonFileString = JsonUtils.getJsonDataFromAsset(this.requireContext(), "data.json")
         if (jsonFileString != null) {
-            Log.i("data", jsonFileString)
+            //Log.i(TAG, "data: $jsonFileString")
+            val convertedObject  = Gson().fromJson(jsonFileString, Widget::class.java)
+            Log.i(TAG, "convertedObject: $convertedObject")
+            //Log.i(TAG, convertedObject.data.toString())
+            val widgetViewModel = WidgetViewModel()
+            widgetViewModel.widgets.add(convertedObject)
+            //
+            binding.recyclerView.adapter = LayoutAdapter(widgetViewModel)
         }
         //
     }
