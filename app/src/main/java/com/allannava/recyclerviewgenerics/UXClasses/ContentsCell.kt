@@ -6,6 +6,9 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.allannava.recyclerviewgenerics.Models.Representation.MutableCollectionWidgetItem
+import com.allannava.recyclerviewgenerics.Models.Representation.WidgetItemType
+import com.allannava.recyclerviewgenerics.Models.Widget
 import com.allannava.recyclerviewgenerics.R
 
 /**
@@ -36,5 +39,18 @@ class ContentsCell<T> : LinearLayout {
             snapHelper.attachToRecyclerView(recyclerView)
             //
         }
-
+    //
+    var items: MutableCollectionWidgetItem<WidgetItemType> = MutableCollectionWidgetItem()
+    var type: Widget? = null
+        set(value) {
+            field = value
+            items.clear()
+            if (value != null) {
+                value.items?.let {
+                    //items.addAll(it)
+                    adapter.items = it
+                }
+            }
+            adapter.notifyDataSetChanged()
+        }
 }

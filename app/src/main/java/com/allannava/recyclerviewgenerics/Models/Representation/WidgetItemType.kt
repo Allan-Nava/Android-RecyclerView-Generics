@@ -13,6 +13,13 @@ class MutableCollectionWidgetItem<T> where T : WidgetItemType {
     fun addItem(item: T) {
         items.add(item)
     }
+
+    /**
+     * Add the item in the collection.
+     */
+    fun addAll(list: Collection<T>) {
+        items.addAll(list)
+    }
     /**
      * Returns the list of the collection.
      */
@@ -31,6 +38,12 @@ class MutableCollectionWidgetItem<T> where T : WidgetItemType {
     fun elementAt(i: Int): T {
         return items[i]
     }
+    /**
+    * */
+    fun clear() {
+        items.clear()
+    }
+
 }
 //
 interface WidgetItemType

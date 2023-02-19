@@ -40,7 +40,8 @@ class LayoutAdapter (var widgetViewModel: WidgetViewModel,): RecyclerView.Adapte
         val item = widgetViewModel.widgets.elementAt(position)
         //
         if (item.data?.layout == WidgetLayout.HEADER) {
-
+            val view = (viewHolder as ContentViewHolder<*>).contentCard
+            view
         }
     }
 }

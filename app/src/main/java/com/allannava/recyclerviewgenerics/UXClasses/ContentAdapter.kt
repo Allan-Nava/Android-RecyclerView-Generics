@@ -24,6 +24,7 @@ class ContentAdapter<T> : RecyclerView.Adapter<ContentAdapter.ViewHolder<T>>() {
     //
     override fun onBindViewHolder(holder: ViewHolder<T>, position: Int) {
         val item = items.elementAt(position)
+
         //holder.card.layoutWithItemWidget( item )
         /*holder.card.button.setOnClickListener {
             //Log.i("SliderAdapter", "onBindViewHolder clicked  ${item.} | ${item.image}")
