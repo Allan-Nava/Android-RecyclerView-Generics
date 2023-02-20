@@ -1,5 +1,6 @@
 package com.allannava.recyclerviewgenerics.Models
 
+import android.util.Log
 import com.google.gson.JsonObject
 
 /**
@@ -33,7 +34,9 @@ class DataWidget(jsonObject: JsonObject) {
             layout = WidgetLayout.fromLabel(jsonObject.get("layout").asString)
         }
         jsonObject.get("endpoint").let{
-            endpoint = it.asString
+            if(it!=null) {
+                endpoint = it.asString
+            }
         }
     }
     //

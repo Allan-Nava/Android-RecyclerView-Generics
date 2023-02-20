@@ -47,7 +47,7 @@ class ContentsCell<T> : LinearLayout {
             items.clear()
             if (value != null) {
                 value.items?.let {
-                    //items.addAll(it)
+                    items.addAll(it)
                     adapter.items = it
                 }
             }

@@ -1,5 +1,6 @@
 package com.allannava.recyclerviewgenerics.UXClasses
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@ class LayoutAdapter (var widgetViewModel: WidgetViewModel,): RecyclerView.Adapte
     //
     override fun getItemViewType(position: Int): Int {
         val widget = widgetViewModel.widgets.elementAt(position)
+        Log.i(TAG, "widget widget ${widget.data} | ${widget.data?.layout}")
         return widget.data!!.layout!!.value
     }
     //
@@ -27,10 +29,12 @@ class LayoutAdapter (var widgetViewModel: WidgetViewModel,): RecyclerView.Adapte
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         // need to check how to pass the type! and handle the widget name
         // ContentViewHolder<>("")
+        Log.i(TAG, "parent $parent | viewType $viewType ")
         if (viewType == WidgetLayout.HEADER.value){
             //return ContentViewHolder<T, TK>
+            return ContentViewHolder<ContentLayoutType>( LayoutInflater.from(parent.context).inflate(R.layout.contents_view, parent, false))
         } else if ( viewType == WidgetLayout.HIGHLIGHT_CAROUSEL.value){
-
+            return ContentViewHolder<ContentLayoutType>( LayoutInflater.from(parent.context).inflate(R.layout.contents_view, parent, false))
         }
         return ContentViewHolder<ContentLayoutType>( LayoutInflater.from(parent.context).inflate(R.layout.contents_view, parent, false))
         //
@@ -41,7 +45,10 @@ class LayoutAdapter (var widgetViewModel: WidgetViewModel,): RecyclerView.Adapte
         //
         if (item.data?.layout == WidgetLayout.HEADER) {
             val view = (viewHolder as ContentViewHolder<*>).contentCard
-            view
+            view.type = item
+        }else{
+            val view = (viewHolder as ContentViewHolder<*>).contentCard
+            view.type = item
         }
     }
 }
