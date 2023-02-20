@@ -1,5 +1,6 @@
 package com.allannava.recyclerviewgenerics.Models
 
+import android.util.Log
 import com.google.gson.JsonObject
 
 /**

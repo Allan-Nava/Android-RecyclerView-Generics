@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.allannava.recyclerviewgenerics.Models.Widget
 import com.allannava.recyclerviewgenerics.Models.WidgetViewModel
 import com.allannava.recyclerviewgenerics.UXClasses.JsonUtils
@@ -14,9 +15,6 @@ import com.allannava.recyclerviewgenerics.UXClasses.LayoutAdapter
 import com.allannava.recyclerviewgenerics.databinding.FragmentFirstBinding
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-
-
-
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -49,12 +47,16 @@ class FirstFragment : Fragment() {
         if (jsonFileString != null) {
             //Log.i(TAG, "data: $jsonFileString")
             val convertedObject  = Gson().fromJson(jsonFileString, Widget::class.java)
-            Log.i(TAG, "convertedObject: $convertedObject")
+            Log.i(TAG, " v: $convertedObject")
             //Log.i(TAG, convertedObject.data.toString())
             val widgetViewModel = WidgetViewModel()
             widgetViewModel.widgets.add(convertedObject)
             //
-            binding.recyclerView.adapter = LayoutAdapter(widgetViewModel)
+            val adapter = LayoutAdapter(widgetViewModel)
+            binding.recyclerView?.let{
+                it.layoutManager = LinearLayoutManager(this.activity,  LinearLayoutManager.VERTICAL, false)
+                it.adapter = adapter
+            }
         }
         //
     }

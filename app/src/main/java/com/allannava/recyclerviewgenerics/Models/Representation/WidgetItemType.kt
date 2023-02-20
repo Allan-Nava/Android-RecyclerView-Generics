@@ -20,6 +20,13 @@ class MutableCollectionWidgetItem<T> where T : WidgetItemType {
     fun addAll(list: Collection<T>) {
         items.addAll(list)
     }
+
+    /**
+     * Add the item in the collection.
+     */
+    fun addAll(list: MutableCollectionWidgetItem<T>) {
+        items.addAll(list.items)
+    }
     /**
      * Returns the list of the collection.
      */
