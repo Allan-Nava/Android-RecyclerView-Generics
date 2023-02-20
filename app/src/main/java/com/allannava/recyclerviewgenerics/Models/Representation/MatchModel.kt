@@ -51,13 +51,19 @@ class MatchModel(jsonObject: JsonObject) : WidgetItemType {
             }
         }
         jsonObject.get("name").let {
-            name = it.asString
+            if(it!=null) {
+                name = it.asString
+            }
         }
         jsonObject.get("status").let {
-            status = it.asString
+            if(it!=null) {
+                status = it.asString
+            }
         }
         jsonObject.get("active").let {
-            active = it.asString
+            if(it!=null) {
+                active = it.asString
+            }
         }
         jsonObject.get("date").let {
             date = it.asString

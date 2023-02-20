@@ -18,10 +18,14 @@ class MediaModel(jsonObject: JsonObject) : WidgetItemType {
 
     init{
         jsonObject.get("title").let {
-            title = it.asString
+            if(it!=null) {
+                title = it.asString
+            }
         }
         jsonObject.get("subtitle").let {
-            subtitle = it.asString
+            if(it!=null) {
+                subtitle = it.asString
+            }
         }
         jsonObject.get("image").let {
             image = it.asString.toUri()

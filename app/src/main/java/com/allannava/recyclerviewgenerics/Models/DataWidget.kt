@@ -30,7 +30,7 @@ class DataWidget(jsonObject: JsonObject) {
             //category = jsonObject.get("category").asString
         }
         if(jsonObject.has("layout")){
-            layout = WidgetLayout.valueOf(jsonObject.get("layout").asString)
+            layout = WidgetLayout.fromLabel(jsonObject.get("layout").asString)
         }
         jsonObject.get("endpoint").let{
             endpoint = it.asString

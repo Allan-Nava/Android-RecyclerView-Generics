@@ -40,40 +40,64 @@ class StandingModel(jsonObject: JsonObject) : WidgetItemType {
             }
         }
         jsonObject.get("name").let {
-            name = it.asString
+            if(it!=null) {
+                name = it.asString
+            }
         }
         jsonObject.get("active").let {
-            active = it.asString
+            if(it!=null) {
+                active = it.asString
+            }
         }
         jsonObject.get("image").let {
-            image = it.asString.toUri()
+            if(it!=null) {
+                image = it.asString.toUri()
+            }
         }
         jsonObject.get("secondary_image").let {
-            secondaryImage = it.asString.toUri()
+            if(it!=null) {
+                secondaryImage = it.asString.toUri()
+            }
         }
         jsonObject.get("rank").let {
-            rank = it.asInt
+            if(it!=null) {
+                rank = it.asInt
+            }
         }
         jsonObject.get("lastRank").let {
-            lastRank = it.asInt
+            if(it!=null) {
+                lastRank = it.asInt
+            }
         }
         jsonObject.get("rankStatus").let {
-            rankStatus = it.asString
+            if(it!=null) {
+                rankStatus = it.asString
+            }
         }
         jsonObject.get("points").let {
-            points = it.asInt
+            if(it!=null) {
+                points = it.asInt
+            }
         }
         jsonObject.get("matches_played").let {
-            matchesPlayed = it.asInt
+            if(it!=null) {
+                matchesPlayed = it.asInt
+            }
         }
         jsonObject.get("matches_won").let {
-            matchesWon = it.asInt
+            if(it!=null) {
+                matchesWon = it.asInt
+            }
         }
         jsonObject.get("matches_drawn").let {
-            matchesDrawn = it.asInt
+            if(it!=null) {
+                matchesDrawn = it.asInt
+            }
         }
         jsonObject.get("matches_lost").let {
-            matchesLost = it.asInt
+            if(it!=null) {
+                matchesLost = it.asInt
+            }
         }
         jsonObject.get("goals_for").let {
             goalsFor = it.asInt

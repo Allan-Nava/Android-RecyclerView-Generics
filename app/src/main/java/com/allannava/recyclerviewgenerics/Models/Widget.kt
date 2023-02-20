@@ -9,7 +9,7 @@ import com.google.gson.JsonObject
  */
 class Widget(jsonObject: JsonObject) {
     lateinit var name : WidgetName
-    var items : MutableCollectionWidgetItem<WidgetItemType>? = null
+    var items : MutableCollection<WidgetItemType>? = null
     var data: DataWidget? = null
     //
     init {
@@ -23,7 +23,7 @@ class Widget(jsonObject: JsonObject) {
                     if(dict.isJsonObject){
                         val item = createRepresentation(jsonObject= dict as JsonObject,
                             widgetRepresentation =  this.name )
-                        items?.addItem(item)
+                        items?.add(item)
                     }
                 }
             } else if( body.isJsonObject ){
@@ -32,7 +32,7 @@ class Widget(jsonObject: JsonObject) {
                         if(dict.isJsonObject){
                             val item = createRepresentation(jsonObject= dict as JsonObject,
                                 widgetRepresentation =  this.name )
-                            items?.addItem(item)
+                            items?.add(item)
                         }
                     }
                 }

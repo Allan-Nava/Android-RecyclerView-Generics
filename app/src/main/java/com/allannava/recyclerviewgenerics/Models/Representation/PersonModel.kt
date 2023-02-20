@@ -35,31 +35,49 @@ class PersonModel(jsonObject: JsonObject) : WidgetItemType {
             }
         }
         jsonObject.get("name").let {
-            name = it.asString
+            if(it!=null) {
+                name = it.asString
+            }
         }
         jsonObject.get("surname").let {
-            surname = it.asString
+            if(it!=null) {
+                surname = it.asString
+            }
         }
         jsonObject.get("short_name").let {
-            shortName = it.asString
+            if(it!=null) {
+                shortName = it.asString
+            }
         }
         jsonObject.get("nationality").let {
-            nationality = it.asString
+            if(it!=null) {
+                nationality = it.asString
+            }
         }
         jsonObject.get("cod_role").let {
-            codRole = it.asString
+            if(it!=null) {
+                codRole = it.asString
+            }
         }
         jsonObject.get("image").let {
-            image = it.asString.toUri()
+            if(it!=null) {
+                image = it.asString.toUri()
+            }
         }
         jsonObject.get("medium_shot").let {
-            mediumShot = it.asString.toUri()
+            if(it!=null) {
+                mediumShot = it.asString.toUri()
+            }
         }
         jsonObject.get("uniform_number").let {
-            uniformNumber = it.asString
+            if(it!=null) {
+                uniformNumber = it.asString
+            }
         }
         jsonObject.get("type").let {
-            type = it.asString
+            if(it!=null) {
+                type = it.asString
+            }
         }
         jsonObject.get("order").let {
             order = it.asString
